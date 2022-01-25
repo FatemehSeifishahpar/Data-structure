@@ -57,8 +57,17 @@ def check_balance(text):
         if ch == ')':
             if stack.isEmpty():
                 return False
-            else:
-                stack.pop()
+            if stack.pop()!='(':
+                return False
+        if ch == '[':
+            stack.push(ch)
+
+        if ch == ']':
+            if stack.isEmpty():
+                return False
+            
+            if stack.pop()!='[':
+                return False
         else:
             pass #do nothing
 
@@ -75,7 +84,6 @@ if __name__ == '__main__':
     while not stack.isEmpty():
         print(stack.pop())
 
-    print(check_balance('(2+6*4-7))'))
-    check_balance()
+    print(check_balance('[([()])]'))
     
     
